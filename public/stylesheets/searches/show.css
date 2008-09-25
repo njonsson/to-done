@@ -1,0 +1,12 @@
+.search_results li {
+  margin: 0.25em 0;
+}
+
+.search-tag {
+  background-color: dimgray;
+  color:            white;
+  font-variant:     small-caps;
+  letter-spacing:   0.05em;
+  padding:          0 0.2em;
+  text-transform:   lowercase;
+}

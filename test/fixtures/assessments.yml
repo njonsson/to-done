@@ -1,0 +1,325 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+project_open1_original1_1:
+  task:        project_open1_original1
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+project_open1_original1_2:
+  task:        project_open1_original1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+project_open1_original1_3:
+  task:        project_open1_original1
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+project_open1_original2_1:
+  task:        project_open1_original2
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+project_open1_original2_2:
+  task:        project_open1_original2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+project_open1_original2_3:
+  task:        project_open1_original2
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+project_open1_not_original1_1:
+  task:        project_open1_not_original1
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+project_open1_not_original1_2:
+  task:        project_open1_not_original1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+project_open1_not_original1_3:
+  task:        project_open1_not_original1
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+project_open1_not_original2_1:
+  task:        project_open1_not_original2
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+project_open1_not_original2_2:
+  task:        project_open1_not_original2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+project_open1_not_original2_3:
+  task:        project_open1_not_original2
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+open1_finished1_1:
+  task:        open1_finished1
+  assessed_on: 2008-01-01
+  estimate:    2
+  remaining:   2
+
+open1_finished1_2:
+  task:        open1_finished1
+  assessed_on: 2008-01-02
+  estimate:    1
+  remaining:   1
+
+open1_finished1_3:
+  task:        open1_finished1
+  assessed_on: 2008-01-03
+  estimate:    0
+  remaining:   0
+
+open1_finished2_1:
+  task:        open1_finished2
+  assessed_on: 2008-01-01
+  estimate:    0
+  remaining:   0
+
+open1_finished2_2:
+  task:        open1_finished2
+  assessed_on: 2008-01-02
+  estimate:    0
+  remaining:   0
+
+open1_finished2_3:
+  task:        open1_finished2
+  assessed_on: 2008-01-03
+  estimate:    0
+  remaining:   0
+
+open1_unfinished1_1:
+  task:        open1_unfinished1
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+open1_unfinished1_2:
+  task:        open1_unfinished1
+  assessed_on: 2008-01-02
+  estimate:    3
+  remaining:   3
+
+open1_unfinished1_3:
+  task:        open1_unfinished1
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   3
+
+open1_unfinished2_1:
+  task:        open1_unfinished2
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+open1_unfinished2_2:
+  task:        open1_unfinished2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+open1_unfinished2_3:
+  task:        open1_unfinished2
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+estimate_increasing_from_1_to_3_1_1:
+  task:        estimate_increasing_from_1_to_3_1
+  assessed_on: 2008-01-01
+  estimate:    1
+  remaining:   1
+
+estimate_increasing_from_1_to_3_1_2:
+  task:        estimate_increasing_from_1_to_3_1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+estimate_increasing_from_1_to_3_1_3:
+  task:        estimate_increasing_from_1_to_3_1
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   1
+
+estimate_increasing_from_1_to_3_2_1:
+  task:        estimate_increasing_from_1_to_3_2
+  assessed_on: 2008-01-01
+  estimate:    1
+  remaining:   1
+
+estimate_increasing_from_1_to_3_2_2:
+  task:        estimate_increasing_from_1_to_3_2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+estimate_increasing_from_1_to_3_2_3:
+  task:        estimate_increasing_from_1_to_3_2
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_1_1:
+  task:        estimate_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_1_2:
+  task:        estimate_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_1_3:
+  task:        estimate_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_2_1:
+  task:        estimate_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_2_2:
+  task:        estimate_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+estimate_decreasing_from_3_to_1_2_3:
+  task:        estimate_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-03
+  estimate:    1
+  remaining:   1
+
+both_increasing_from_1_to_3_1_1:
+  task:        both_increasing_from_1_to_3_1
+  assessed_on: 2008-01-01
+  estimate:    1
+  remaining:   1
+
+both_increasing_from_1_to_3_1_2:
+  task:        both_increasing_from_1_to_3_1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+both_increasing_from_1_to_3_1_3:
+  task:        both_increasing_from_1_to_3_1
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   3
+
+both_increasing_from_1_to_3_2_1:
+  task:        both_increasing_from_1_to_3_2
+  assessed_on: 2008-01-01
+  estimate:    1
+  remaining:   1
+
+both_increasing_from_1_to_3_2_2:
+  task:        both_increasing_from_1_to_3_2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   2
+
+both_increasing_from_1_to_3_2_3:
+  task:        both_increasing_from_1_to_3_2
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   3
+
+remaining_decreasing_from_3_to_1_1_1:
+  task:        remaining_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+remaining_decreasing_from_3_to_1_1_2:
+  task:        remaining_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-02
+  estimate:    3
+  remaining:   2
+
+remaining_decreasing_from_3_to_1_1_3:
+  task:        remaining_decreasing_from_3_to_1_1
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   1
+
+remaining_decreasing_from_3_to_1_2_1:
+  task:        remaining_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-01
+  estimate:    3
+  remaining:   3
+
+remaining_decreasing_from_3_to_1_2_2:
+  task:        remaining_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-02
+  estimate:    3
+  remaining:   2
+
+remaining_decreasing_from_3_to_1_2_3:
+  task:        remaining_decreasing_from_3_to_1_2
+  assessed_on: 2008-01-03
+  estimate:    3
+  remaining:   1
+
+remaining_decreasing_from_2_to_0_1_1:
+  task:        remaining_decreasing_from_2_to_0_1
+  assessed_on: 2008-01-01
+  estimate:    2
+  remaining:   2
+
+remaining_decreasing_from_2_to_0_1_2:
+  task:        remaining_decreasing_from_2_to_0_1
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+remaining_decreasing_from_2_to_0_1_3:
+  task:        remaining_decreasing_from_2_to_0_1
+  assessed_on: 2008-01-03
+  estimate:    2
+  remaining:   0
+
+remaining_decreasing_from_2_to_0_2_1:
+  task:        remaining_decreasing_from_2_to_0_2
+  assessed_on: 2008-01-01
+  estimate:    2
+  remaining:   2
+
+remaining_decreasing_from_2_to_0_2_2:
+  task:        remaining_decreasing_from_2_to_0_2
+  assessed_on: 2008-01-02
+  estimate:    2
+  remaining:   1
+
+remaining_decreasing_from_2_to_0_2_3:
+  task:        remaining_decreasing_from_2_to_0_2
+  assessed_on: 2008-01-03
+  estimate:    2
+  remaining:   0

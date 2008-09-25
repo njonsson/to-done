@@ -1,0 +1,22 @@
+<% content_for(:page_title) do -%><%= page_title_with_pagination "Tasks in &ldquo;#{h truncate(@project.name)}&rdquo;", @tasks %><% end -%>
+<% if @tasks.empty? -%>
+<%= render :partial => 'list_actions' -%>
+
+  <%- content_tag(:p, :class => 'first') do %>You have no unfinished tasks in <%= link_to h(@project.name), project_path(@project) %>. <%= link_to 'Create one', new_project_task_path(@project) %> now.<% end %>
+
+  <%- content_tag(:p, :class => 'last') do %>You have <%= link_to_tasks @project.tasks.finished(true).count,
+                                                                        finished_project_tasks_path(@project),
+                                                                        :before => 'finished' %>.<% end %>
+<% else -%>
+<%= content_tag :h1, 'Unfinished tasks', :class => 'no-style' %>
+
+<%= render :partial => 'list_actions' -%>
+
+  <%- content_tag(:p, :class => 'first') do %>This is a list of your unfinished tasks in <%= link_to h(@project.name),
+                                                                                                     project_path(@project) %>. You can put them in whatever order you wish.<% end %>
+  <%- content_tag(:p) do %>You have <%= link_to_tasks @project.tasks.finished(true).count,
+                                                      finished_project_tasks_path(@project),
+                                                      :before => 'finished' %>.<% end %>
+
+<%= render :partial => 'list' %>
+<% end -%>

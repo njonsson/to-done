@@ -1,0 +1,69 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+open1:
+  name:      open1
+  slug:      open1
+  notes:     Notes on project open1.
+
+open2:
+  name:      open2
+  slug:      open2
+  notes:     Notes on project open2.
+
+open3:
+  name:      open3
+  slug:      open3
+  notes:     Notes on project open3.
+
+closed1:
+  name:      closed1
+  slug:      closed1
+  notes:     Notes on project closed1.
+  closed_on: 2008-01-01
+
+closed2:
+  name:      closed2
+  slug:      closed2
+  notes:     Notes on project closed2.
+  closed_on: 2008-01-02
+
+closed3:
+  name:      closed3
+  slug:      closed3
+  notes:     Notes on project closed3.
+  closed_on: 2008-01-03
+
+no_tasks:
+  name:      no_tasks
+  slug:      no-tasks
+  notes:     Project having no tasks.
+
+unassessed_tasks:
+  name:      unassessed_tasks
+  slug:      unassessed-tasks
+  notes:     Project having just two tasks -- one original, one not -- without assessments.
+
+estimate_increasing_from_1_to_6:
+  name:      estimate_increasing_from_1_to_6
+  slug:      estimate-increasing-from-1-to-6
+  notes:     Project having two tasks -- one original, one not -- whose estimates are each increasing from 1 to 3.
+
+estimate_decreasing_from_3_to_2:
+  name:      estimate_decreasing_from_3_to_2
+  slug:      estimate-decreasing-from-3-to-2
+  notes:     Project having two tasks -- one original, one not -- whose estimates are each decreasing from 3 to 1.
+
+both_increasing:
+  name:      both_increasing
+  slug:      both-increasing
+  notes:     Project having two tasks -- one original, one not -- whose estimates and remaining values are each increasing from 1 to 3.
+
+remaining_decreasing_from_3_to_2:
+  name:      remaining_decreasing_from_3_to_2
+  slug:      remaining-decreasing-from-3-to-2
+  notes:     Project having two tasks -- one original, one not -- whose remaining values are each decreasing from 3 to 1.
+
+remaining_decreasing_from_2_to_0:
+  name:      remaining_decreasing_from_2_to_0
+  slug:      remaining-decreasing-from-2-to-0
+  notes:     Project having two tasks -- one original, one not -- whose remaining values are each decreasing from 2 to 0.

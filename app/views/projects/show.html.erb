@@ -1,0 +1,45 @@
+<% content_for(:page_title) do %>&ldquo;<%= truncate h(@project.name) %>&rdquo; (Project)<% end -%>
+<% content_for(:additional_styles) do -%>
+<%= stylesheet_link_tag 'show' %>
+<% end -%>
+<%= content_tag :h1, 'Actions', :class => 'no-style' %>
+
+<% content_tag(:ul, :class => 'actions') do %>
+<%= link_list_item 'Edit properties', edit_project_path(@project) %>
+
+<% if @project.closed? -%>
+<%= button_list_item 'Reopen project', {:action => 'reopen',
+                                        :id => @project},
+                                       :method => :put %>
+<% else -%>
+<%= button_list_item 'Close project', {:action => 'close',
+                                       :id => @project},
+                                      :method => :put %>
+<% end -%>
+
+<%= button_list_item 'Delete project', {:action => 'destroy',
+                                        :id => @project},
+                                       :confirm => "Are you sure you want\nto delete this project?",
+                                       :method => :delete %>
+<% end %>
+
+<% if @project.closed? -%>
+  <%- content_tag(:p, :class => 'first') do %>This project was closed on <%= @project.closed_on.to_formatted_s :formal %>.<% end %>
+<% end %>
+<%= content_tag :h1, h(@project.name), :class => 'name' -%>
+
+<% unless @project.notes.blank? -%>
+  <%- content_tag(:blockquote) do %>
+<%= simple_format auto_link(h(@project.notes)) %>
+  <%- end -%>
+<% end -%>
+
+<% content_tag(:div, :id => 'details') do %>
+  <%- content_tag(:p) do %>The work estimate for this project was <%= @project.original_estimate || 'not made'  %> at the start of the project; it is currently <%= @project.current_estimate || 'unknown' %>. The work remaining is <%= @project.remaining || 'unknown' %>.<% end %>
+
+  <%- content_tag(:p, :class => 'last') do %>This project has <%= link_to_tasks @project.tasks.finished(false).count,
+                                                                                project_tasks_path(@project),
+                                                                               :before => 'unfinished' %> and <%= link_to_tasks @project.tasks.finished(true).count,
+                                                                                                                                finished_project_tasks_path(@project),
+                                                                                                                                :before => 'finished' %>.<% end %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= content_tag :h2, 'Actions', :class => 'no-style' %>
+
+<% content_tag(:ul, :class => 'actions') do %>
+<%= link_list_item 'Create new task', new_project_task_path(@project) %>
+<% end %>

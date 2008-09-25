@@ -1,0 +1,13 @@
+h1 {
+  width: 55%;
+}
+
+#assessment {
+  clear:         right;
+  float:         right;
+  margin-bottom: 1em;
+}
+
+#assessment input[type="text"] {
+  width: 1.5em;
+}

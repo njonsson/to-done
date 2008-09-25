@@ -1,0 +1,163 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+open1_original1:
+  project:    open1
+  name:       open1_original1
+  notes:      Notes on open1_original1.
+  original:   true
+  finished:   false
+  position:   1
+
+open1_original2:
+  project:    open1
+  name:       open1_original2
+  notes:      Notes on open1_original2.
+  original:   true
+  finished:   false
+  position:   2
+
+open1_not_original1:
+  project:    open1
+  name:       open1_not_original1
+  notes:      Notes on open1_not_original1.
+  original:   false
+  finished:   false
+  position:   3
+
+open1_not_original2:
+  project:    open1
+  name:       open1_not_original2
+  notes:      Notes on open1_not_original2.
+  original:   false
+  finished:   false
+  position:   4
+
+open1_finished1:
+  project:    open1
+  name:       open1_finished1
+  notes:      Original task in project open1 with remaining value of 0.
+  original:   true
+  finished:   true
+  finished:   false
+  position:   5
+
+open1_finished2:
+  project:    open1
+  name:       open1_finished2
+  notes:      Non-original task in project open1 with remaining value of 0.
+  original:   false
+  finished:   true
+  finished:   false
+  position:   6
+
+open1_unfinished1:
+  project:    open1
+  name:       open1_unfinished1
+  notes:      Original task in project open1 with remaining value of 3.
+  original:   true
+  finished:   false
+  position:   7
+
+open1_unfinished2:
+  project:    open1
+  name:       open1_unfinished2
+  notes:      Non-original task in project open1 with remaining value of 1.
+  original:   false
+  finished:   false
+  position:   8
+
+unassessed_tasks1:
+  project:    unassessed_tasks
+  name:       unassessed_tasks1
+  notes:      Original task in project unassessed_tasks with no assessments.
+  original:   true
+  finished:   false
+  position:   1
+
+unassessed_tasks2:
+  project:    unassessed_tasks
+  name:       unassessed_tasks2
+  notes:      Non-original task in project unassessed_tasks with no assessments.
+  original:   false
+  finished:   false
+  position:   2
+
+estimate_increasing_from_1_to_3_1:
+  project:    estimate_increasing_from_1_to_6
+  name:       estimate_increasing_from_1_to_3_1
+  notes:      Original task in project estimate_increasing_from_1_to_6 with estimate increasing from 1 to 3.
+  original:   true
+  finished:   false
+  position:   1
+
+estimate_increasing_from_1_to_3_2:
+  project:    estimate_increasing_from_1_to_6
+  name:       estimate_increasing_from_1_to_3_2
+  notes:      Non-original task in project estimate_increasing_from_1_to_6 with estimate increasing from 1 to 3.
+  original:   false
+  finished:   false
+  position:   2
+
+estimate_decreasing_from_3_to_1_1:
+  project:    estimate_decreasing_from_3_to_2
+  name:       estimate_decreasing_from_3_to_1_1
+  notes:      Original task in project estimate_decreasing_from_3_to_2 with estimate decreasing from 3 to 1.
+  original:   true
+  finished:   false
+  position:   1
+
+estimate_decreasing_from_3_to_1_2:
+  project:    estimate_decreasing_from_3_to_2
+  name:       estimate_decreasing_from_3_to_1_2
+  notes:      Non-original task in project estimate_decreasing_from_3_to_2 with estimate decreasing from 3 to 1.
+  original:   false
+  finished:   false
+  position:   2
+
+both_increasing_from_1_to_3_1:
+  project:    both_increasing
+  name:       both_increasing_from_1_to_3_1
+  notes:      Original task in project both_increasing with estimate and remaining increasing from 1 to 3.
+  original:   true
+  finished:   false
+  position:   1
+
+both_increasing_from_1_to_3_2:
+  project:    both_increasing
+  name:       both_increasing_from_1_to_3_2
+  notes:      Non-original task in project both_increasing with estimate and remaining increasing from 1 to 3.
+  original:   false
+  finished:   false
+  position:   2
+
+remaining_decreasing_from_3_to_1_1:
+  project:    remaining_decreasing_from_3_to_2
+  name:       remaining_decreasing_from_3_to_1_1
+  notes:      Original task in project remaining_decreasing_from_3_to_2 with remaining decreasing from 3 to 1.
+  original:   true
+  finished:   false
+  position:   1
+
+remaining_decreasing_from_3_to_1_2:
+  project:    remaining_decreasing_from_3_to_2
+  name:       remaining_decreasing_from_3_to_1_2
+  notes:      Non-original task in project remaining_decreasing_from_3_to_2 with remaining decreasing from 3 to 1.
+  original:   false
+  finished:   false
+  position:   2
+
+remaining_decreasing_from_2_to_0_1:
+  project:    remaining_decreasing_from_2_to_0
+  name:       remaining_decreasing_from_2_to_0_1
+  notes:      Original task in project remaining_decreasing_from_2_to_0 with remaining decreasing from 2 to 0.
+  original:   true
+  finished:   false
+  position:   1
+
+remaining_decreasing_from_2_to_0_2:
+  project:    remaining_decreasing_from_2_to_0
+  name:       remaining_decreasing_from_2_to_0_2
+  notes:      Non-original task in project remaining_decreasing_from_2_to_0 with remaining decreasing from 2 to 0.
+  original:   false
+  finished:   false
+  position:   2

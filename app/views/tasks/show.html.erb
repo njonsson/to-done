@@ -1,0 +1,121 @@
+<% content_for(:page_title) do %>&ldquo;<%= truncate h(@task.name) %>&rdquo; (Task)<% end -%>
+<% content_for(:additional_styles) do -%>
+<%= stylesheet_link_tag 'show' %>
+
+<%= stylesheet_link_tag 'tasks/show' %>
+
+  <%- content_tag(:style, :type => 'text/css') do %>
+#assessment {
+  width: 19em;
+}
+
+dt {
+  width: 8.5em;
+}
+
+.errorExplanation {
+  padding-left: 8.5em;
+}
+  <%- end %>
+<% end -%>
+<%= render :partial => 'shared/highlight_list_item' -%>
+
+<%= content_tag :h1, 'Actions', :class => 'no-style' %>
+
+<% content_tag(:ul, :class => 'actions') do %>
+<%= link_list_item 'Edit properties', edit_task_path(@task) %>
+
+<%= button_list_item 'Delete task', {:action => 'destroy',
+                                     :id => @task},
+                                     :confirm => "Are you sure you want\nto delete this task?",
+                                     :method => :delete %>
+<% end %>
+
+<% if @task.finished_on -%>
+  <%- content_tag(:p, :class => 'first') do %>This task in <%= link_to h(@task.project.name), project_path(@task.project) %> was finished on <%= @task.finished_on.to_formatted_s :formal %>.<% end %>
+<% else -%>
+  <%- content_tag(:p, :class => 'first') do -%>This is an unfinished task in <%= link_to h(@task.project.name), project_path(@task.project) %>.<% end %>
+<% end %>
+
+<% content_tag(:fieldset, :id => 'assessment') do %>
+<%= content_tag :legend, 'Progress Assessment' %>
+
+  <%- form_for(:latest_assessment, :url => assess_task_path(@task),
+                                   :html => {:method => :put}) do |form| %>
+<%= error_messages_for :latest_assessment %>
+
+    <%- content_tag(:ul, :class => 'actions') do %>
+<%= submit_list_item form %>
+    <%- end %>
+
+    <%- content_tag(:dl) do %>
+      <%- content_tag(:dt) do -%>
+<%= form.label :estimate, 'Current estimate' %>
+      <%- end %>
+      <%- content_tag(:dd, :class => 'first') do -%>
+<%= form.text_field :estimate, :class => 'numeric autofocus', :size => nil %>
+      <%- end %>
+
+      <%- content_tag(:dt) do -%>
+<%= form.label :remaining %>
+      <%- end %>
+      <%- content_tag(:dd, :class => 'last') do -%>
+<%= form.text_field :remaining, :class => 'numeric', :size => nil %>
+      <%- end %>
+    <%- end %>
+  <%- end %>
+<% end %>
+
+<%= content_tag :h1, h(@task.name), :class => 'name' -%>
+
+<% unless @task.notes.blank? -%>
+  <%- content_tag(:blockquote) do %>
+<%= simple_format auto_link(h(@task.notes)) %>
+  <%- end -%>
+<% end -%>
+
+<% content_tag(:div, :id => 'details') do %>
+  <%- if @assessments.empty? -%>
+    <%- content_tag(:p, :class => 'last') do %>There is no progress for this task.<% end %>
+  <%- else -%>
+  <%- content_tag(:p) do %>Here is a history of this task&rsquo;s progress.<% end %>
+
+  <%- content_tag(:table, :class => 'last') do %>
+    <%- content_tag(:thead) do %>
+      <%- content_tag(:tr) do %>
+<%= content_tag :th, 'As Of', :align => 'right',
+                             :class => 'rule',
+                             :valign => 'bottom' %>
+
+<%= content_tag :th, 'Estimate', :align => 'right',
+                                 :class => 'rule',
+                                 :valign => 'bottom' %>
+
+<%= content_tag :th, 'Remaining', :align => 'right',
+                                  :class => 'rule',
+                                  :valign => 'bottom' %>
+      <%- end %>
+    <%- end %>
+
+    <%- content_tag(:tbody) do %>
+      <%- @assessments.each do |assessment| -%>
+        <%- content_tag(:tr, :id => dom_id(assessment)) do %>
+<%= content_tag :td,
+                assessment.assessed_on.to_formatted_s(:formal),
+                :align => 'right',
+                :valign => 'top' %>
+
+<%= content_tag :td, assessment.estimate, :align => 'right',
+                                          :valign => 'top' %>
+
+<%= content_tag :td, assessment.remaining, :align => 'right',
+                                           :valign => 'top' %>
+        <%- end %>
+
+      <%- end -%>
+    <%- end %>
+  <%- end -%>
+  <%- end -%>
+
+<%= will_paginate @assessments %>
+<% end %>

@@ -1,0 +1,311 @@
+html, body {
+  background-color: lightgrey;
+  color:            dimgray;
+}
+
+body, input, textarea {
+  font-family: Didot, Georgia, serif;
+  font-size:   large;
+}
+
+input[type="text"], textarea {
+  padding: 4px;
+}
+
+body {
+  margin: 3em 0;
+}
+
+h1, h2, h3 {
+  font-weight:   bold;
+  margin-bottom: 0.5em;
+}
+
+h1 {
+  font-size: xx-large;
+}
+
+h2 {
+  font-size: x-large;
+}
+
+h3 {
+  font-size: large;
+}
+
+blockquote, p, ol, ul, table {
+  margin: 0.5em 0;
+}
+
+blockquote {
+  border-left:  0.25em solid lightgrey;
+  padding-left: 0.5em;
+}
+
+p.first, ol.first, ul.first, table.first {
+  margin-top: 0;
+}
+
+p.last, ol.last, ul.last, table.last {
+  margin-bottom: 0;
+}
+
+fieldset {
+  border:  0.1em solid lightgrey;
+  padding: 0.25em 0.5em 0.5em 0.5em;
+}
+
+legend {
+  color:   dimgray;
+  padding: 0 0.25em;
+}
+
+form.button-to, form.button-to div {
+  display: inline;
+}
+
+#links, .actions, .action, input[type="submit"], th, .pagination {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+input.numeric {
+  text-align: right;
+}
+
+table {
+  clear: both;
+}
+
+th, td {
+  padding: 0.25em 0.5em;
+}
+
+th {
+  font-weight: bold;
+}
+
+th[align="right"] {
+  text-align: right;
+}
+
+th[colspan], .rule {
+  border-bottom: solid 0.1em dimgray;
+}
+
+.light-rule {
+  border-bottom: solid 0.1em lightgrey;
+}
+
+th[colspan] {
+  font-size:      medium;
+  text-align:     center;
+  text-transform: uppercase;
+}
+
+hr {
+  display: none;
+}
+
+a, input[type="submit"] {
+  font-weight: bold;
+}
+
+a {
+  border-bottom:   0.1em dotted dimgray;
+  color:           dimgray;
+  padding:         0.5em 0 0 0;
+  text-decoration: none;
+}
+
+#links a, th a, td a, .pagination a {
+  border-bottom: none;
+  padding:       0.25em 0;
+}
+
+a:hover {
+  border-bottom: 0.1em solid black;
+  color:         black;
+}
+
+#links a, th a:hover, td a:hover, .pagination a {
+  border-bottom: none;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+form dt {
+  clear: left;
+  float: left;
+}
+
+form dd {
+  margin: 0.5em 0;
+}
+
+form dd.first {
+  margin-top: 0;
+}
+
+form dd.last {
+  margin-bottom: 0;
+}
+
+label {
+  display:      block;
+  margin-right: 0.5em;
+  padding-top:  6px;
+  text-align:   right;
+}
+
+input[type="checkbox"] {
+  margin-top: 0.5em;
+}
+
+textarea {
+  height: 10em;
+}
+
+#page {
+  margin: 0 auto;
+  width:  90%;
+}
+
+#flash {
+  color:       dimgray;
+  float:       right;
+  padding-top: 1em;
+  text-align:  right;
+  width:       40%;
+}
+
+#warning {
+  color: black;
+}
+
+#links {
+  margin: 0;
+}
+
+#links li {
+  float:          left;
+  font-weight:    bold;
+  text-transform: uppercase;
+}
+
+#links .current {
+  background-color: dimgray;
+  color:            white;
+}
+
+#links li a, #links .current {
+  padding: 1em 1em 0.75em 1em;
+}
+
+#links li a {
+  display: block;
+}
+
+#content {
+  background-color: white;
+  border:           0.1em solid dimgray;
+  clear:            both;
+  padding:          2.5%;
+}
+
+#search-controls {
+  position:   absolute;
+  text-align: right;
+  top:        1em;
+  right:      5%;
+  width:      40%;
+}
+
+#search-controls dt {
+  width: 35%;
+}
+
+#search-controls dd {
+  width: 100%;
+}
+
+#search {
+  width: 55%;
+}
+
+.actions, .actions *, .pagination {
+  font-size: medium;
+}
+
+.actions {
+  float:      right;
+  margin:     0 0 1em 1em;
+  text-align: right;
+}
+
+.actions li {
+  margin: 0 0 0.25em 0;
+}
+
+#copyright {
+  font-size:  small;
+  margin:     1em 0 0 0;
+  text-align: right;
+}
+
+.errorExplanation {
+  margin-bottom: 1em;
+}
+
+.errorExplanation li {
+  list-style: square inside;
+  margin-left: 0.5em;
+}
+
+.fieldWithErrors {
+  display: inline;
+}
+
+.fieldWithErrors input, .fieldWithErrors textarea {
+  border: 0.2em double dimgray;
+}
+
+.no-style {
+  display: none;
+}
+
+.pagination {
+  font-weight:  bold;
+  padding:      0.5em 0;
+  word-spacing: -0.25em;
+}
+
+.pagination .prev_page, .pagination .next_page {
+  word-spacing: normal;
+}
+
+.pagination .prev_page,
+.pagination .current,
+.pagination a,
+.pagination .next_page {
+  padding: 0.5em;
+}
+
+.pagination .current {
+  background-color: dimgray;
+  color:            white;
+}
+
+.pagination .disabled {
+  color: lightgrey;
+}
+
+.highlight {
+  background-color: #ffff55;
+  padding:          0 0.05em;
+}

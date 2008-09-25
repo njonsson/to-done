@@ -1,0 +1,9 @@
+.arrow {
+  font-weight: normal;
+  padding:     0.15em;
+}
+
+.arrow-cell {
+  color:   lightgrey;
+  padding: 0;
+}

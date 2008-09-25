@@ -1,0 +1,69 @@
+<%= render :partial => 'shared/highlight_list_item' -%>
+
+<% content_tag(:table, :class => 'last') do %>
+  <%- content_tag(:thead) do %>
+    <%- content_tag(:tr) do %>
+<%= content_tag :th, 'Name', :align => 'left',
+                             :class => 'rule',
+                             :rowspan => '2',
+                             :valign => 'bottom' %>
+
+<%= content_tag :th, 'Estimate', :colspan => '2',
+                                 :valign => 'bottom' %>
+
+<%= content_tag :th, 'Remaining', :align => 'right',
+                                  :class => 'rule',
+                                  :rowspan => '2',
+                                  :valign => 'bottom' %>
+
+<%= content_tag :th, 'Task Count', :colspan => '2',
+                                   :valign => 'bottom' %>
+    <%- end %>
+
+    <%- content_tag(:tr) do %>
+<%= content_tag :th, 'Original', :align => 'right',
+                                 :class => 'rule',
+                                 :valign => 'bottom' %>
+
+<%= content_tag :th, @final ? 'Final' : 'Current', :align => 'right',
+                                                   :class => 'rule',
+                                                   :valign => 'bottom' %>
+
+<%= content_tag :th, 'Unfinished', :align => 'right',
+                                   :class => 'rule',
+                                   :valign => 'bottom' %>
+
+<%= content_tag :th, 'Finished', :align => 'right',
+                                 :class => 'rule',
+                                 :valign => 'bottom' %>
+    <%- end %>
+  <%- end %>
+
+  <%- content_tag(:tbody) do %>
+    <%- @projects.each do |project| -%>
+      <%- content_tag(:tr, :id => dom_id(project)) do %>
+<%= content_tag :td,
+                link_to(h(truncate(project.name)), project_path(project)),
+                :valign => 'top' %>
+
+<%= content_tag :td, project.original_estimate, :align => 'right',
+                                                :valign => 'top' %>
+
+<%= content_tag :td, project.current_estimate, :align => 'right',
+                                               :valign => 'top' %>
+
+<%= content_tag :td, project.remaining, :align => 'right',
+                                        :valign => 'top' %>
+
+<%= content_tag :td, project.tasks.finished(false).count, :align => 'right',
+                                                          :valign => 'top' %>
+
+<%= content_tag :td, project.tasks.finished(true).count, :align => 'right',
+                                                         :valign => 'top' %>
+      <%- end %>
+
+    <%- end -%>
+  <%- end %>
+<% end -%>
+
+<%= will_paginate %>

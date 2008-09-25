@@ -1,0 +1,91 @@
+<% content_for(:additional_styles) do -%>
+<%= stylesheet_link_tag 'sortable-list' %>
+<% end -%>
+<%= render :partial => 'shared/highlight_list_item' -%>
+
+<% content_tag(:table) do %>
+  <%- content_tag(:thead) do %>
+    <%- content_tag(:tr) do %>
+<%= content_tag :th, 'Name', :align => 'left',
+                             :class => 'rule',
+                             :rowspan => '2',
+                             :valign => 'bottom' %>
+
+<%= content_tag :th, 'Estimate', :class => 'rule',
+                                 :colspan => '2',
+                                 :valign => 'bottom' %>
+
+      <%- unless @final -%>
+<%= content_tag :th, 'Remaining', :align => 'right',
+                                  :class => 'rule',
+                                  :rowspan => '2',
+                                  :valign => 'bottom' %>
+      <%- end %>
+
+      <%- if @allow_reordering -%>
+<%= content_tag :th, nil, :class => 'rule', :colspan => '2', :rowspan => '2' %>
+      <%- end %>
+    <%- end %>
+
+    <%- content_tag(:tr) do %>
+<%= content_tag :th, 'Original', :align => 'right',
+                                 :class => 'rule',
+                                 :valign => 'bottom' %>
+
+<%= content_tag :th, @final ? 'Final' : 'Current', :align => 'right',
+                                                   :class => 'rule',
+                                                   :valign => 'bottom' %>
+    <%- end %>
+  <%- end %>
+
+  <%- content_tag(:tbody) do %>
+    <%- @tasks.each_with_index do |task, i| -%>
+      <%- content_tag(:tr, :id => dom_id(task)) do %>
+<%= content_tag :td,
+                link_to(h(truncate(task.name)), task_path(task)),
+                :valign => 'top' %>
+
+<%= content_tag :td, task.original_estimate, :align => 'right',
+                                             :valign => 'top' %>
+
+<%= content_tag :td, task.current_estimate, :align => 'right',
+                                            :valign => 'top' %>
+
+        <%- unless @final -%>
+<%= content_tag :td, task.remaining, :align => 'right',
+                                     :valign => 'top' %>
+        <%- end %>
+
+        <%- if @allow_reordering -%>
+          <%- content_tag(:td, :align => 'center',
+                               :class => 'arrow-cell',
+                               :valign => 'top') do %>
+<%= link_to_if 0 < i,
+               finger_glyph_for_body(:up),
+               move_above_task_path(task,
+                                    :reference_id => @tasks[i - 1],
+                                    :redirect_to => url_for(params)),
+               :class => 'arrow',
+               :method => :put,
+               :title => 'Move Up' -%>
+          <%- end %>
+          <%- content_tag(:td, :align => 'center',
+                               :class => 'arrow-cell',
+                               :valign => 'top') do %>
+<%= link_to_if i < (@tasks.total_entries - 1),
+               finger_glyph_for_body(:down),
+               move_below_task_path(task,
+                                    :reference_id => @tasks[i + 1],
+                                    :redirect_to => url_for(params)),
+               :class => 'arrow',
+               :method => :put,
+               :title => 'Move Down' -%>
+          <%- end %>
+        <%- end %>
+      <%- end %>
+
+    <%- end -%>
+  <%- end %>
+<% end -%>
+
+<%= will_paginate %>
