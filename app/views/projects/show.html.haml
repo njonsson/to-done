@@ -1,0 +1,50 @@
+- content_for :page_title do
+  == &ldquo;#{truncate h(@project.name)}&rdquo;
+  (Project)
+
+- content_for :additional_styles do
+  = stylesheet_link_tag 'show'
+
+%h1.no-style Actions
+
+%ul.actions
+  = link_list_item 'Edit properties', edit_project_path(@project)
+  
+  - if @project.closed?
+    = button_list_item 'Reopen project', {:action => 'reopen', :id => @project}, :method => :put
+  - else
+    = button_list_item 'Close project', {:action => 'close', :id => @project}, :method => :put
+  
+  = button_list_item 'Delete project', {:action => 'destroy',                                        |
+                                        :id => @project},                                            |
+                                       :confirm => "Are you sure you want\nto delete this project?", |
+                                       :method => :delete                                            |
+
+- if @project.closed?
+  %p.first
+    This project was closed on
+    == #{@project.closed_on.to_formatted_s :formal}.
+
+%h1.name= h @project.name
+
+- unless @project.notes.blank?
+  %blockquote
+    = simple_format auto_link(h(@project.notes))
+
+#details
+  %p
+    The work estimate for this project was
+    = @project.original_estimate || 'not made'
+    at the start of the project; it is currently
+    == #{@project.current_estimate || 'unknown'}.
+    The work remaining is
+    == #{@project.remaining || 'unknown'}.
+  %p.last
+    This project has
+    = link_to_tasks @project.tasks.finished(false).count, |
+                    project_tasks_path(@project),         |
+                    :before => 'unfinished'               |
+    and
+    == #{link_to_tasks @project.tasks.finished(true).count,   |
+                       finished_project_tasks_path(@project), |
+                       :before => 'finished'}.                |

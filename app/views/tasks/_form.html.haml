@@ -1,0 +1,45 @@
+- content_for :additional_styles do
+  %style{'type' => 'text/css'}
+    :plain
+      h1 {
+        margin-left: 2.4em;
+      }
+      
+      dt {
+        width: 4em;
+      }
+      
+      dd input[type="text"], dd textarea {
+        width: 65%;
+      }
+      
+      .errorExplanation {
+        padding-left: 4em;
+      }
+
+%h1.no-style Properties
+
+- form_for :task, :url => form_action,                        |
+                  :html => {:method => form_method} do |form| |
+  %ul.actions
+    = link_list_item 'Cancel', form_action, :always_link => true
+    = submit_list_item form, submit_button_label
+  
+  = error_messages_for :task
+  
+  %dl
+    %dt= form.label :name
+    %dd.first
+      = form.text_field :name,                                                            |
+                        :class => 'autofocus',                                            |
+                        :maxlength => Task.columns.detect { |c| c.name == 'name' }.limit, |
+                        :size => nil                                                      |
+    
+    %dt= form.label :notes
+    %dd
+      = form.text_area :notes, :rows => 4, :cols => 21
+    
+    %dt= form.label :original
+    %dd.last
+      = form.check_box :original, {}, 'true', 'false'
+      %i (Check this box if the task does not represent new work)

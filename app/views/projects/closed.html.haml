@@ -1,0 +1,15 @@
+- content_for :page_title do
+  = page_title_with_pagination 'Closed Projects', @projects
+
+- if @projects.empty?
+  = render :partial => 'list_actions'
+  
+  %p.first.last You have no closed projects.
+- else
+  %h1.no-style Closed projects
+  
+  = render :partial => 'list_actions'
+  
+  %p.first This is a list of your closed projects, sorted by name.
+  
+  = render :partial => 'list'

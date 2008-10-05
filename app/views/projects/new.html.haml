@@ -1,0 +1,9 @@
+- content_for :page_title do
+  Creating New Project
+
+%h1 New project
+
+= render :partial => 'form',                           |
+         :locals => {:form_action => projects_path,    |
+                     :form_method => :post,            |
+                     :submit_button_label => 'Create'} |

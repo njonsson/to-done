@@ -1,0 +1,10 @@
+- content_for :page_title do
+  Editing
+  == &ldquo;#{h truncate(@task.name)}&rdquo;
+
+%h1 Editing task
+
+= render :partial => 'form',                                 |
+         :locals => {:form_action => task_path(@task),       |
+                     :form_method => :put,                   |
+                     :submit_button_label => 'Save changes'} |
