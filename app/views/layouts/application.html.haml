@@ -1,0 +1,63 @@
+!!! Strict
+%html{html_attrs}
+  %head
+    %meta{'http-equiv' => 'content-type',         |
+          'content' => 'text/html;charset=UTF-8'} |
+    
+    - if (page_title = yield(:page_title))
+      %title= "#{page_title} | #{application_name_for_title}"
+    - else
+      %title= application_name_for_title
+    
+    = stylesheet_link_tag 'reset-min'
+    = stylesheet_link_tag 'general'
+    = stylesheet_link_tag 'searches/show'
+    = yield :additional_styles
+    
+    = javascript_include_tag :defaults
+    = javascript_include_tag 'autofocus'
+    = javascript_include_tag 'pulsate-flash'
+    = yield :additional_script
+  
+  %body
+    #page
+      #flash
+        %em#warning
+          = flash[:warning] ? "#{finger_glyph_for_flash}#{flash[:warning]}" : ''
+        %span#notice
+          = flash[:notice] ? "#{finger_glyph_for_flash}#{flash[:notice]}" : ''
+      
+      #search-controls
+        %h1.no-style
+          Search
+        %form{'action' => search_path, 'method' => 'get'}
+          %dl
+            %dt
+              = label nil, nil, 'Search', :for => 'search'
+            %dd
+              = text_field_tag 'q', params[:q], :id => 'search'
+          %ul.actions.no-style
+            %li
+              = submit_tag 'Go', :name => nil
+        = observe_field :search, :url => search_path, |
+                                 :method => :get,     |
+                                 :with => 'q',        |
+                                 :frequency => 1.0,   |
+                                 :update => 'content' |
+      
+      %h1.no-style
+        Links
+      %ul#links
+        = link_list_item 'Dashboard', root_path
+        = link_list_item 'Projects',  projects_path
+      
+      #content
+        = yield
+      
+      %hr
+      
+      %p#copyright
+        Copyright &copy; 2008
+        = link_to 'Nils Jonsson',                                             |
+                  'mailto:nils@alumni.rice.edu?subject=To%20-&gt;%20Done%21', |
+                  :title => 'Send e-mail to nils@alumni.rice.edu'             |

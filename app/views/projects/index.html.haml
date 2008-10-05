@@ -1,0 +1,26 @@
+- content_for :page_title do
+  = page_title_with_pagination 'Projects', @projects
+
+- if @projects.empty?
+  = render :partial => 'list_actions'
+  
+  %p.first
+    You have no open projects.
+    == #{link_to 'Create one', new_project_path} now.
+  %p.last
+    You have
+    == #{link_to pluralize_with_pretty_zero(Project.closed(true).count, |
+                                            'closed project'),          |
+                 closed_projects_path}.                                 |
+- else
+  %h1.no-style Projects
+  
+  = render :partial => 'list_actions'
+  
+  %p.first
+    This is a list of your open projects, sorted by name. You have
+    == #{link_to pluralize_with_pretty_zero(Project.closed(true).count, |
+                                            'closed project'),          |
+         closed_projects_path}.                                         |
+
+= render :partial => 'list'

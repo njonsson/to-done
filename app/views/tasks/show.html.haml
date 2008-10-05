@@ -1,0 +1,95 @@
+- content_for :page_title do
+  == &ldquo;#{truncate h(@task.name)}&rdquo;
+  (Task)
+
+- content_for :additional_styles do
+  = stylesheet_link_tag 'show'
+  = stylesheet_link_tag 'tasks/show'
+  
+  %style{'type' => 'text/css'}
+    :plain
+      #assessment {
+        width: 19em;
+      }
+      
+      dt {
+        width: 8.5em;
+      }
+      
+      .errorExplanation {
+        padding-left: 8.5em;
+      }
+
+= render :partial => 'shared/highlight_list_item'
+
+%h1.no-style Actions
+
+%ul.actions
+  = link_list_item 'Edit properties', edit_task_path(@task)
+  = button_list_item 'Delete task', {:action => 'destroy',                                      |
+                                     :id => @task},                                             |
+                                     :confirm => "Are you sure you want\nto delete this task?", |
+                                     :method => :delete                                         |
+
+- if @task.finished_on
+  %p.first
+    This task in
+    = link_to h(@task.project.name), project_path(@task.project)
+    was finished on
+    == #{@task.finished_on.to_formatted_s :formal}.
+- else
+  %p.first
+    This is an unfinished task in
+    == #{link_to h(@task.project.name), project_path(@task.project)}.
+
+%fieldset#assessment
+  %legend Progress Assessment
+  
+  - form_for(:latest_assessment, :url => assess_task_path(@task),      |
+                                 :html => {:method => :put}) do |form| |
+    = error_messages_for :latest_assessment
+    
+    %ul.actions
+      = submit_list_item form
+    
+    %dl
+      %dt
+        = form.label :estimate, 'Current estimate'
+      %dd.first
+        = form.text_field :estimate, :class => 'numeric autofocus', :size => nil
+      
+      %dt
+        = form.label :remaining
+      %dd.last
+        = form.text_field :remaining, :class => 'numeric', :size => nil
+
+%h1.name= h @task.name
+
+- unless @task.notes.blank?
+  %blockquote
+    = simple_format auto_link(h(@task.notes))
+
+#details
+  - if @assessments.empty?
+    %p.last There is no progress for this task.
+  - else
+    %p Here is a history of this task&rsquo;s progress.
+    
+    %table.last
+      %thead
+        %tr
+          %th.rule{'align' => 'right', 'valign' => 'bottom'} As Of
+          %th.rule{'align' => 'right', 'valign' => 'bottom'} Estimate
+          %th.rule{'align' => 'right', 'valign' => 'bottom'} Remaining
+      
+      %tbody
+        - @assessments.each do |assessment|
+          %tr{'id' => dom_id(assessment)}
+            %td{'align' => 'right', 'valign' => 'top'}
+              = assessment.assessed_on.to_formatted_s :formal
+            %td{'align' => 'right', 'valign' => 'top'}
+              = assessment.estimate
+            %td{'align' => 'right', 'valign' => 'top'}
+              = assessment.remaining
+    
+    = will_paginate @assessments

@@ -1,0 +1,21 @@
+- if params[:q].blank?
+  %p.first.last Type some words to search for.
+- elsif @search.results.empty?
+  %p.first.last
+    There are no search results for
+    == <strong class="highlight">#{h params[:q]}</strong>.
+- else
+  %p.first
+    Here are the search results for
+    == <strong class="highlight">#{h params[:q]}</strong>.
+  
+  %ul.search-results.last
+    - escaped_terms = @search.search_terms.collect { |term| h term }
+    - @search.results.each do |result|
+      %li
+        %span.search-tag= result.class.name.humanize
+        = link_to highlight(h(result.name), escaped_terms), |
+                  polymorphic_path(result)                  |
+        - unless result.notes.blank?
+          %blockquote
+            = highlight simple_format(h(result.notes)), escaped_terms

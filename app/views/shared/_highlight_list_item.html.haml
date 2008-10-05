@@ -1,0 +1,7 @@
+- if flash[:highlight_dom_id]
+  - content_for :additional_script do
+    - javascript_tag do
+      :plain
+        Event.observe(window, 'load', function() {
+          new Effect.Highlight('<%= flash[:highlight_dom_id] %>');
+        });

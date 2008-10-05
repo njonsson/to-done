@@ -1,0 +1,29 @@
+= render :partial => 'shared/highlight_list_item'
+
+%table.last
+  %thead
+    %tr
+      %th.rule{'align' => 'left', 'rowspan' => '2', 'valign' => 'bottom'} Name
+      %th{'colspan' => '2', 'valign' => 'bottom'} Estimate
+      %th.rule{'align' => 'right', 'rowspan' => '2', 'valign' => 'bottom'} Remaining
+      %th{'colspan' => '2', 'valign' => 'bottom'} Task Count
+    
+    %tr
+      %th.rule{'align' => 'right', 'valign' => 'bottom'} Original
+      %th.rule{'align' => 'right', 'valign' => 'bottom'}
+        = @final ? 'Final' : 'Current'
+      %th.rule{'align' => 'right', 'valign' => 'bottom'} Unfinished
+      %th.rule{'align' => 'right', 'valign' => 'bottom'} Finished
+  
+  %tbody
+    - @projects.each do |project|
+      %tr{'id' => dom_id(project)}
+        %td{'valign' => 'top'}
+          = link_to h(truncate(project.name)), project_path(project)
+        %td{'align' => 'right', 'valign' => 'top'}= project.original_estimate
+        %td{'align' => 'right', 'valign' => 'top'}= project.current_estimate
+        %td{'align' => 'right', 'valign' => 'top'}= project.remaining
+        %td{'align' => 'right', 'valign' => 'top'}= project.tasks.finished(false).count
+        %td{'align' => 'right', 'valign' => 'top'}= project.tasks.finished(true).count
+
+= will_paginate

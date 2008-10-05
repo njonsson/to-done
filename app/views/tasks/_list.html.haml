@@ -1,0 +1,58 @@
+- content_for :additional_styles do
+  = stylesheet_link_tag 'sortable-list'
+
+= render :partial => 'shared/highlight_list_item'
+
+%table
+  %thead
+    %tr
+      %th.rule{'align' => 'left', 'rowspan' => '2', 'valign' => 'bottom'} Name
+      %th.rule{'colspan' => '2', 'valign' => 'bottom'} Estimate
+      
+      - unless @final
+        %th.rule{'align' => 'right', 'rowspan' => '2', 'valign' => 'bottom'} Remaining
+      
+      - if @allow_reordering
+        %th.rule{'colspan' => '2', 'rowspan' => '2'}
+    
+    %tr
+      %th.rule{'align' => 'right', 'valign' => 'bottom'}
+        Original
+      %th.rule{'align' => 'right', 'valign' => 'bottom'}
+        = @final ? 'Final' : 'Current'
+  
+  %tbody
+    - @tasks.each_with_index do |task, i|
+      %tr{'id' => dom_id(task)}
+        %td{'valign' => 'top'}
+          = link_to h(truncate(task.name)), task_path(task)
+        %td{'align' => 'right', 'valign' => 'top'}
+          = task.original_estimate
+        %td{'align' => 'right', 'valign' => 'top'}
+          = task.current_estimate
+        
+        - unless @final
+          %td{'align' => 'right', 'valign' => 'top'}
+            = task.remaining
+        
+        - if @allow_reordering
+          %td.arrow-cell{'align' => 'center', 'valign' => 'top'}
+            = link_to_if 0 < i,                                                 |
+                         finger_glyph_for_body(:up),                            |
+                         move_above_task_path(task,                             |
+                                              :reference_id => @tasks[i - 1],   |
+                                              :redirect_to => url_for(params)), |
+                         :class => 'arrow',                                     |
+                         :method => :put,                                       |
+                         :title => 'Move Up'                                    |
+          %td.arrow-cell{'align' => 'center', 'valign' => 'top'}
+            = link_to_if i < (@tasks.total_entries - 1),                        |
+                         finger_glyph_for_body(:down),                          |
+                         move_below_task_path(task,                             |
+                                              :reference_id => @tasks[i + 1],   |
+                                              :redirect_to => url_for(params)), |
+                         :class => 'arrow',                                     |
+                         :method => :put,                                       |
+                         :title => 'Move Down'                                  |
+
+= will_paginate

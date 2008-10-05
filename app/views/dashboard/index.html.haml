@@ -1,0 +1,48 @@
+- content_for :page_title do
+  Dashboard
+
+%h1.no-style Dashboard
+
+- if @tasks.empty?
+  %p.first.last
+    You have no unfinished tasks in any of your
+    == #{link_to 'open projects', projects_path}.
+- else
+  %h1.no-style Unfinished tasks
+  %p.first
+    This list shows the top unfinished task in each of your
+    == #{link_to 'open projects', projects_path}.
+  
+  %table.last
+    %thead
+      %tr
+        %th.rule{'align' => 'left', 'rowspan' => '2', 'valign' => 'bottom'}
+          Project / Task
+        %th.rule{'colspan' => '2', 'valign' => 'bottom'}
+          Estimate
+        %th.rule{'align' => 'right', 'rowspan' => '2', 'valign' => 'bottom'}
+          Remaining
+      
+      %tr
+        %th.rule{'align' => 'right', 'valign' => 'bottom'} Original
+        %th.rule{'align' => 'right', 'valign' => 'bottom'} Current
+    
+    %tbody
+      - @tasks.each do |task|
+        %tr
+          %td{'valign' => 'top'}
+            = link_to h(truncate(task.project.name)), project_path(task.project)
+          %td{'align' => 'right', 'valign' => 'top'}
+            = task.project.original_estimate
+          %td{'align' => 'right', 'valign' => 'top'}
+            = task.project.current_estimate
+          %td{'align' => 'right', 'valign' => 'top'}
+            = task.project.remaining
+        
+        %tr.light-rule
+          %td{'valign' => 'top'}
+            = finger_glyph_for_body :right
+            = link_to h(truncate(task.name)), task_path(task)
+          %td{'align' => 'right', 'valign' => 'top'}= task.original_estimate
+          %td{'align' => 'right', 'valign' => 'top'}= task.current_estimate
+          %td{'align' => 'right', 'valign' => 'top'}= task.remaining

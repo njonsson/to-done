@@ -1,7 +1,0 @@
-<% content_for(:page_title) do -%>Creating New Task in &ldquo;<%= truncate h(@project.name) %>&rdquo;<% end -%>
-<% content_tag :h1 do %>New task in <%= link_to h(@project.name), project_path(@project) %><% end %>
-
-<%= render :partial => 'form',
-           :locals => {:form_action => project_tasks_path(@project),
-                       :form_method => :post,
-                       :submit_button_label => 'Create'} %>

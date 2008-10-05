@@ -1,0 +1,9 @@
+- content_for :page_title do
+  == Editing &ldquo;#{h truncate(@project.name)}&rdquo;
+
+%h1 Editing project
+
+= render :partial => 'form',                                 |
+         :locals => {:form_action => project_path(@project), |
+                     :form_method => :put,                   |
+                     :submit_button_label => 'Save changes'} |
