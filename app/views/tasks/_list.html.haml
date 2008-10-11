@@ -37,7 +37,7 @@
         
         - if @allow_reordering
           %td.arrow-cell{'align' => 'center', 'valign' => 'top'}
-            = link_to_if 0 < i,                                                 |
+            = link_to_if show_move_up?(i),                                      |
                          finger_glyph_for_body(:up),                            |
                          move_above_task_path(task,                             |
                                               :reference_id => @tasks[i - 1],   |
@@ -46,7 +46,7 @@
                          :method => :put,                                       |
                          :title => 'Move Up'                                    |
           %td.arrow-cell{'align' => 'center', 'valign' => 'top'}
-            = link_to_if i < (@tasks.total_entries - 1),                        |
+            = link_to_if show_move_down?(i),                                    |
                          finger_glyph_for_body(:down),                          |
                          move_below_task_path(task,                             |
                                               :reference_id => @tasks[i + 1],   |
