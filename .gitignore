@@ -1,7 +1,0 @@
-.DS_Store
-log/*.log
-tmp/*
-tmp/**/*
-db/*.sqlite3
-coverage
-doc/app/
